@@ -13,9 +13,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			auth: false,
 		},
 		actions: {
+
+			login: async (dataToSend) => {
+				try {
+					const response = await fetch("https://bookish-eureka-x5wrv97pxvg92w7x-3001.app.github.dev/api/login", {
+						method:"POST",
+						headers:{
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify(dataToSend),
+					});
+			
+					const responseData = await response.json();
+			
+					if (response.ok) {
+						console.log("Inicio de sesión correcto", responseData);
+						setStore({ auth: true });
+			
+						// Guardar el token de acceso en localStorage
+						localStorage.setItem("token", responseData.access_token);
+			
+					} else {
+						console.log("Error en el inicio de sesión", responseData);
+					}
+				} catch (error) {
+					console.log("Error al realizar la solicitud", error);
+				}
+
+			},
+
+
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
