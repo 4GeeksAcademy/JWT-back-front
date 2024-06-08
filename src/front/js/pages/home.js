@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import Login from "./login";
+import Signup from "./signup";
 
 
 export const Home = () => {
@@ -9,6 +10,7 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
+			<Signup/>
 			<Login/>
 		</div>
 	);
