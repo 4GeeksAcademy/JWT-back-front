@@ -58,7 +58,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="text-center">
-                  <button type="submit" className="btn btn-primary mt-5">
+                  <button type="submit" className="btn btn-success mt-5">
                     Iniciar sesión
                   </button>
                 </div>
